@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { fetchArticles } from "../services/Article.service";
 import { ArticleResponseWP } from "../types/Article";
 import ArticleSkeleton from "../components/article/ArticleSkeleton";
+import Article from "../components/article/Article";
+import BtnMore from "../components/btn/btnMore";
 
 const nbArticlePerRequest = 2;
 const ArticleList = () => {
@@ -14,13 +16,20 @@ const ArticleList = () => {
 		});
 	}, []);
 
-	const test = articles.map((article: ArticleResponseWP) => {
-		return <div>{article.id}</div>;
+	const dispalyArticles = articles.map((article: ArticleResponseWP) => {
+		return (
+			<>
+				<Article
+					key={article.id}
+					date={new Date(article.date)}
+					resume={article.excerpt.rendered}
+					title={article.title.rendered}
+				/>
+			</>
+		);
 	});
 
-	console.log(articles);
-
-	return <div>{isLoading ? <ArticleSkeleton /> : test}</div>;
+	return <div>{isLoading ? <ArticleSkeleton /> : dispalyArticles}</div>;
 };
 
 export default ArticleList;
