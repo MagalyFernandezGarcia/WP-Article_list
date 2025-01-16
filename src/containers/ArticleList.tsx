@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { fetchArticles } from "../services/Article.service";
 import { ArticleResponseWP } from "../types/Article";
 import ArticleSkeleton from "../components/article/ArticleSkeleton";
