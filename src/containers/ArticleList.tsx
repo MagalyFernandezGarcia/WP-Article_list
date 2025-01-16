@@ -13,6 +13,7 @@ const ArticleList = () => {
 	useEffect(() => {
 		fetchArticles(nbArticlePerRequest, currentPage).then((result) => {
 			setArticles((articles) => [...articles, ...result]);
+
 			setIsLoading(false);
 		});
 	}, [currentPage]);

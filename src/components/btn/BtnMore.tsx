@@ -1,4 +1,4 @@
-import style from "./btnMore.module.css";
+import style from "./btnMore.module.scss";
 const BtnMore = ({ onSetPage }: { onSetPage: () => void }) => {
 	return (
 		<button
