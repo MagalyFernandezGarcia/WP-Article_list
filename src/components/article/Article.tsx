@@ -1,31 +1,28 @@
-
-import style from "./article.module.scss"
+import style from "./Article.module.scss";
 
 type ArticleProps = {
-    title : string
-    date : Date
-    resume : string
-}
+	title: string;
+	date: Date;
+	resume: string;
+};
 
-const Article = ({title, date, resume}: ArticleProps) => {
+const Article = ({ title, date, resume }: ArticleProps) => {
+	const isToday = date.toDateString() === new Date().toDateString();
 
-    const renderDate = date.toLocaleDateString("fr-BE", {
-        day: "numeric",
-        month: "long",
-        year: (new Date().getFullYear() !== date.getFullYear()) ?"numeric" : undefined})
+	const renderDate = date.toLocaleDateString("fr-be", {
+		day: "numeric",
+		month: "long",
+		year:
+			new Date().getFullYear() !== date.getFullYear() ? "numeric" : undefined,
+	});
 
-    const isToday = date.toDateString() === new Date().toDateString()  
+	return (
+		<div className={style.article}>
+			<h3>{title}</h3>
+			<p>{isToday ? "Aujourd'hui" : renderDate}</p>
+			<div className={style.content}>{resume}</div>
+		</div>
+	);
+};
 
-    return (
-        <div className={style.article}>
-            <h3>{title}</h3>
-            <p>{isToday ? "Aujourd'hui" : renderDate}</p>
-            <div>
-            <p className={style.resume}>{resume}</p>
-            </div>
-        </div>
-    )
-    
-}
-
-export default Article
+export default Article;
