@@ -9,12 +9,17 @@ const nbArticlePerRequest = 2;
 const ArticleList = () => {
 	const [articles, setArticles] = useState<ArticleResponseWP[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
+	const [currentPage, setCurrentPage] = useState(1);
 	useEffect(() => {
-		fetchArticles(nbArticlePerRequest, 1).then((result) => {
+		fetchArticles(nbArticlePerRequest, currentPage).then((result) => {
 			setArticles((articles) => [...articles, ...result]);
 			setIsLoading(false);
 		});
-	}, []);
+	}, [currentPage]);
+
+	const addArticle = () => {
+		setCurrentPage(currentPage + 1);
+	};
 
 	const dispalyArticles = articles.map((article: ArticleResponseWP) => {
 		return (
@@ -29,7 +34,12 @@ const ArticleList = () => {
 		);
 	});
 
-	return <div>{isLoading ? <ArticleSkeleton /> : dispalyArticles}</div>;
+	return (
+		<div>
+			{isLoading ? <ArticleSkeleton /> : dispalyArticles}
+			<BtnMore onSetPage={addArticle} />
+		</div>
+	);
 };
 
 export default ArticleList;
