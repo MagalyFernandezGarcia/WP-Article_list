@@ -3,7 +3,7 @@ import ArticleList from "./containers/ArticleList";
 
 
 const App =()=>{
-	<Router>
+	 return <Router>
 		<Routes>
 		<Route path="/" element={<ArticleList />} />
 		</Routes>
