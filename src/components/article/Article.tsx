@@ -17,7 +17,7 @@ const Article = ({ title, date, resume }: ArticleProps) => {
 	});
 
 	return (
-		<div className={style.article}>
+		<div className={style.article} dangerouslySetInnerHTML={{ __html: resume }}>
 			<h3>{title}</h3>
 			<p>{isToday ? "Aujourd'hui" : renderDate}</p>
 			<div className={style.content}>{resume}</div>

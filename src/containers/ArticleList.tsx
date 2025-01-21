@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 import { fetchArticles } from "../services/Article.service";
 import { ArticleResponseWP } from "../types/Article";
 import ArticleSkeleton from "../components/article/ArticleSkeleton";
 import Article from "../components/article/Article";
-import BtnMore from "../components/btn/btnMore";
+import BtnMore from "../components/btn/BtnMore";
 
 const nbArticlePerRequest = 2;
 const ArticleList = () => {
