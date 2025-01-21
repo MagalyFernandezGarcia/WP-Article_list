@@ -1,38 +1,40 @@
 .article {
     padding: 1ch;
-    box-shadow: 0.3em 0.3em 0.6em slategray;
+    box-shadow: 0.3em 0.3em 0.3em slategray;
     border-radius: 1em;
     background-color: aliceblue;
+
     display: grid;
     grid-template-columns: 1fr max-content;
     gap: 0.5em;
     grid-template-areas: 
-    "a" "b"
-    "c" "c";
+        "a b"
+        "c c";
+
+    h3, p {
+        margin: 0;
+    }
     
-    h3,p{
-        margin: 0;}
-    .content{
-        grid-area: c;}
-       
-
-
+    .content {
+        grid-area: c;
+    }
 }
 
 .articleSkeleton {
-    div{
+    div {
         min-height: 1em;
         background-color: pink;
+    }
+
+    div:nth-child(1) {
+        width: 10em;
+    }
+
+    div:nth-child(2) {
         width: 5em;
     }
 
-    div:nth-child(1){
-        width: 10em;
-    }
-    div:nth-child(2){
-        width: 5em;
-    }
-    div:nth-child(3){
+    div:nth-child(3) {
         width: 100%;
         min-height: 2em;
     }
