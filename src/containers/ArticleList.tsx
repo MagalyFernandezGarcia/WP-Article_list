@@ -10,13 +10,25 @@ const ArticleList = () => {
 	const [articles, setArticles] = useState<ArticleResponseWP[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [currentPage, setCurrentPage] = useState(1);
-	useEffect(() => {
-		fetchArticles(nbArticlePerRequest, currentPage).then((result) => {
-			setArticles((articles) => [...articles, ...result]);
 
-			setIsLoading(false);
-		});
-	}, [currentPage]);
+
+	 useEffect(() => {
+        let ignore = false;
+        fetchArticles(nbArticlePerRequest, currentPage)
+            .then((result) => {
+                if (ignore) { return; }
+
+                setArticles(articles => [...articles, ...result]);
+                setIsLoading(false);
+
+                
+            });
+
+        return () => {
+            // Stop state update on clean effect 
+            ignore = true;
+        };
+    }, [currentPage]);
 
 	const addArticle = () => {
 		setCurrentPage(currentPage + 1);
@@ -38,7 +50,7 @@ const ArticleList = () => {
 	return (
 		<div>
 			{isLoading ? <ArticleSkeleton /> : dispalyArticles}
-			<BtnMore onSetPage={addArticle} />
+			<BtnMore onSetPage={addArticle} loading={isLoading} />
 		</div>
 	);
 };

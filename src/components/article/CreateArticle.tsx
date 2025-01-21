@@ -33,7 +33,7 @@ const CreateArticle = () => {
       <p>{message}</p>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="title">Titre</label>
+          <label htmlFor="title">Titre :</label>
           <input
             id="title"
             type="text"
@@ -43,7 +43,7 @@ const CreateArticle = () => {
           />
         </div>
         <div>
-          <label htmlFor="content">Titre</label>
+          <label htmlFor="content">COntenu : </label>
           <textarea
             id="content"
             value={content}

@@ -1,16 +1,25 @@
+
 import style from "./btnMore.module.scss";
-const BtnMore = ({ onSetPage }: { onSetPage: () => void }) => {
+const BtnMore = ({ onSetPage, loading  }: { onSetPage: () => void, loading :boolean }) => {
+
 	
-	return (
-		<button
-			className={style.btnMore}
-			onClick={() => {
-				onSetPage();
-			}}
-		>
-			Voir plus
-		</button>
-	);
+	
+	
+		return (
+		
+			<button
+				className={style.btnMore}
+				onClick={() => {
+					onSetPage();
+				}}
+				disabled={loading}
+			>
+				Voir plus
+			</button>
+		);
+
+	
+	
 };
 
 export default BtnMore;
