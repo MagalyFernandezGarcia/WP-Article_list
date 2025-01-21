@@ -79,3 +79,10 @@ export type ArticleResponseWP = {
 		}>;
 	};
 };
+
+
+export type ArticleRequestWP = {
+	title : string,
+	content : string,
+
+}
