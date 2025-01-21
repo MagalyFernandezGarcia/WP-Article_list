@@ -17,12 +17,18 @@ const Article = ({ title, date, resume }: ArticleProps) => {
 	});
 
 	return (
-		<div className={style.article} dangerouslySetInnerHTML={{ __html: resume }}>
+		<div className={style.article}  >
 			<h3>{title}</h3>
 			<p>{isToday ? "Aujourd'hui" : renderDate}</p>
-			<div className={style.content}>{resume}</div>
+			<div className={style.content } 
+				dangerouslySetInnerHTML={{
+					__html: resume 
+					}}> 
+			</div>
 		</div>
 	);
 };
+
+
 
 export default Article;
